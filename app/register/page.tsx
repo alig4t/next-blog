@@ -1,3 +1,4 @@
+import RegisterForm from '@/components/auth/register-form';
 import Container from '@/components/ui/Container';
 import { authOption } from '@/libs/next-auth';
 import { getServerSession } from 'next-auth';
@@ -10,7 +11,9 @@ const RegisterPage = async () => {
 
   return (
     <div className='mt-20'>
-      <Container>ss</Container>
+      <Container>
+        <RegisterForm />
+      </Container>
     </div>
   );
 };

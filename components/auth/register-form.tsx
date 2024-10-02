@@ -1,5 +1,7 @@
 'use client';
 
+import SubmitButton from './submit-button';
+
 const RegisterForm = () => {
   return (
     <form className='mx-auto flex w-96 flex-col gap-y-5'>
@@ -22,6 +24,7 @@ const RegisterForm = () => {
         placeholder='رمز عبور'
         className='rounded-md border p-2 shadow-sm'
       />
+      <SubmitButton />
     </form>
   );
 };
