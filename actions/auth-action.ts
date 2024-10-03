@@ -23,3 +23,18 @@ export const CreateUserAction = async (formData: FormData) => {
     console.log(CreateUserAction, error);
   }
 };
+
+export const CheckUserExist = async (formData: FormData) => {
+  try {
+    const { email } = Object.fromEntries(formData);
+    const user = await prismadb.user.findUnique({
+      where: {
+        email: email as string,
+      },
+    });
+    if (!user) return false;
+    return true;
+  } catch (error) {
+    console.log(CheckUserExist, error);
+  }
+};

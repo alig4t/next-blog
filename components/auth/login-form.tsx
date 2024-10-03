@@ -1,19 +1,23 @@
 'use client';
-import { signIn } from 'next-auth/react';
-import { CreateUserAction } from '@/actions/auth-action';
+import { CheckUserExist } from '@/actions/auth-action';
 import SubmitButton from './submit-button';
+import { redirect } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
-const RegisterForm = () => {
+const LoginForm = () => {
   return (
     <form
       action={async (formData) => {
         const email = formData.get('email');
         const password = formData.get('password');
-        // const { name, email, password } = Object.fromEntries(formData);
 
-        const res = await CreateUserAction(formData);
-        if (res?.success) {
-          await signIn('credentials', {
+        // const { name, email, password } = Object.fromEntries(formData);
+        const isExistedUser = await CheckUserExist(formData);
+        console.log(isExistedUser);
+        if (!isExistedUser) {
+          redirect('/register');
+        } else {
+          signIn('credentials', {
             email,
             password,
             callbackUrl: '/',
@@ -22,13 +26,8 @@ const RegisterForm = () => {
       }}
       className='mx-auto flex w-96 flex-col gap-y-5'
     >
-      <h2 className='text-3xl font-bold'>نام نویسی</h2>
-      <input
-        type='text'
-        name='name'
-        placeholder='نام'
-        className='rounded-md border p-2 shadow-sm'
-      />
+      <h2 className='text-3xl font-bold'>ورود</h2>
+
       <input
         type='email'
         name='email'
@@ -41,9 +40,9 @@ const RegisterForm = () => {
         placeholder='رمز عبور'
         className='rounded-md border p-2 shadow-sm'
       />
-      <SubmitButton title='ثبت' />
+      <SubmitButton title='ورود' />
     </form>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

@@ -1,6 +1,9 @@
 import { useFormStatus } from 'react-dom';
 
-const SubmitButton = () => {
+type SubmitButtonProps = {
+  title: string;
+};
+const SubmitButton = ({ title }: SubmitButtonProps) => {
   const { pending } = useFormStatus();
   return (
     <button
@@ -8,7 +11,7 @@ const SubmitButton = () => {
       className='rounded-md bg-black px-7 py-2 text-white hover:bg-gray-800 disabled:bg-gray-400'
       disabled={pending}
     >
-      ثبت
+      {title}
     </button>
   );
 };
