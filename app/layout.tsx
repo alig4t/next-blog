@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 // import localFont from 'next/font/local';
 import { Vazirmatn } from 'next/font/google';
 import './globals.css';
+import Navbar from '@/components/navbar/Navbar';
 
 // const geistSans = localFont({
 //   src: './fonts/GeistVF.woff',
@@ -28,7 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html dir='rtl' lang='fa-Ir'>
-      <body className={vazir.className}>{children}</body>
+      <body className={vazir.className}>
+        <Navbar />
+        <div className='flex min-h-dvh flex-col'>{children}</div>
+      </body>
     </html>
   );
 }

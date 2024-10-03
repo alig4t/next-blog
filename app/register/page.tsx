@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 
 const RegisterPage = async () => {
   const session = await getServerSession(authOption);
-
+  console.log(session);
   if (session?.user.userId) redirect('/');
 
   return (
