@@ -9,9 +9,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 enum Role {
@@ -31,7 +30,8 @@ model User {
 }
 
 model Post {
-  id      Int    @id @unique @default(autoincrement())
+  id Int @id @unique @default(autoincrement())
+
   title   String
   address String @unique
   body    String

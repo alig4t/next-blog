@@ -1,10 +1,11 @@
-import prismadb from '@/libs/prismadb';
+'use server';
 
+import prismadb from '@/libs/prismadb';
 import { revalidatePath } from 'next/cache';
 
 export const CreatePostAction = async (formdata: FormData) => {
   try {
-    const { title, body, iamge } = Object.fromEntries(formdata);
+    const { title, body, image } = Object.fromEntries(formdata);
 
     const address = String(title).split(' ').join('-');
 
@@ -13,7 +14,7 @@ export const CreatePostAction = async (formdata: FormData) => {
         title: title as string,
         address,
         body: body as string,
-        image: iamge as string,
+        image: image as string,
       },
     });
 
@@ -27,15 +28,16 @@ export const CreatePostAction = async (formdata: FormData) => {
   }
 };
 
-export const deletePostAction = async (id: number) => {
+export const DeletePostAction = async (id: number) => {
   try {
     await prismadb.post.delete({
       where: {
         id,
       },
     });
+
     revalidatePath('/admin');
   } catch (error) {
-    console.log('deletePostAction', error);
+    console.log('DeletePostAction', error);
   }
 };

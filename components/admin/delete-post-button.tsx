@@ -1,6 +1,6 @@
 'use client';
 
-import { deletePostAction } from '@/actions/post-action';
+import { DeletePostAction } from '@/actions/post-action';
 import { Trash } from 'lucide-react';
 
 type Iprops = {
@@ -12,7 +12,7 @@ const DeletePostButton = ({ id }: Iprops) => {
     <button
       onClick={(e) => {
         e.preventDefault();
-        deletePostAction(id);
+        DeletePostAction(id);
       }}
       className='rounded-md bg-gray-100 p-4 text-rose-500 hover:bg-gray-200'
     >
