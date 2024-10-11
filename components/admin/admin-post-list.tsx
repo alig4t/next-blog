@@ -3,6 +3,7 @@ import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import DeletePostButton from './delete-post-button';
+import { Post } from '@prisma/client';
 
 const AdminPostList = async () => {
   const posts = await prismadb.post.findMany({
@@ -13,18 +14,24 @@ const AdminPostList = async () => {
 
   return (
     <div className='space-y-4'>
-      {posts.map((post) => (
+      {posts.map((post: Post) => (
         <div key={post.id} className='flex gap-x-2'>
           <div className='flex flex-1 items-start gap-x-4 rounded-md bg-gray-100 px-3 py-4 shadow-sm'>
             <div className='relative size-20'>
-              <Image
-                src={post.image}
-                alt={post.title}
-                fill
-                className='rounded-md border object-cover shadow-sm'
-              />
+              {post.image.startsWith('https://') && (
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className='rounded-md border object-cover shadow-sm'
+                />
+              )}
             </div>
-            <h3 className='text-2xl font-bold'>{post.title}</h3>
+            <h3 className='text-2xl font-bold'>
+              {post.title.length > 40
+                ? post.title.substring(0, 40) + '...'
+                : post.title}
+            </h3>
           </div>
           <div className='flex flex-col gap-y-2'>
             <DeletePostButton id={post.id} />

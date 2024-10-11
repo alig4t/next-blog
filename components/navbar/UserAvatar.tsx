@@ -8,7 +8,9 @@ type userAvatarProps = {
 };
 
 const UserAvatar = async ({ session }: userAvatarProps) => {
-  if (!session || !session.user.userId)
+  console.log(session);
+
+  if (!session?.user?.userId) {
     return (
       <div>
         <Link
@@ -19,6 +21,8 @@ const UserAvatar = async ({ session }: userAvatarProps) => {
         </Link>
       </div>
     );
+  }
+
   const user = await prismadb.user.findUnique({
     where: {
       id: session.user.userId,

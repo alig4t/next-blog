@@ -2,12 +2,14 @@
 
 import { DeletePostAction } from '@/actions/post-action';
 import { Trash } from 'lucide-react';
+import { useFormStatus } from 'react-dom';
 
 type Iprops = {
   id: number;
 };
 
 const DeletePostButton = ({ id }: Iprops) => {
+  const { pending } = useFormStatus();
   return (
     <button
       onClick={(e) => {
