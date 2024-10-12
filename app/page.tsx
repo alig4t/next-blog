@@ -2,6 +2,7 @@ import Container from '@/components/ui/Container';
 import heroImage from '@/public/hero-image.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import Loading from './loading';
 
 const HomePage = () => {
   return (
@@ -35,6 +36,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        <Loading />
       </Container>
     </div>
   );

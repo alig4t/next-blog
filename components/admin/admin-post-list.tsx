@@ -24,6 +24,7 @@ const AdminPostList = async () => {
                   alt={post.title}
                   fill
                   className='rounded-md border object-cover shadow-sm'
+                
                 />
               )}
             </div>

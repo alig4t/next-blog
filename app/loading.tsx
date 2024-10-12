@@ -1,11 +1,15 @@
 import { createPortal } from 'react-dom';
 
 const Loading = () => {
-  return createPortal(
-    <div className='absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-[#5f5c5c0f]'>
-      <p>در حال بارگزاری...</p>
-    </div>,
-    document.body,
+  return (
+    <div className='z-50 flex h-dvh w-full items-center justify-center'>
+      <div className='loading-dots'>
+        {/* <h1 className='mb-6'>در حال بارگزاری</h1> */}
+        <h1 className='dot one'>.</h1>
+        <h1 className='dot two'>.</h1>
+        <h1 className='dot three'>.</h1>
+      </div>
+    </div>
   );
 };
 
