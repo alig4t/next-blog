@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-// import localFont from 'next/font/local';
-import { Vazirmatn } from 'next/font/google';
+import localFont from 'next/font/local';
+// import { Vazirmatn } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/navbar/Navbar';
 
@@ -15,7 +15,11 @@ import Navbar from '@/components/navbar/Navbar';
 //   weight: '100 900',
 // });
 
-const vazir = Vazirmatn({ subsets: ['arabic'] });
+// const vazir = Vazirmatn({ subsets: ['arabic'] });
+
+const vazir = localFont({
+  src: '../public/webFonts/Vazirmatn-Light.woff2'
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',

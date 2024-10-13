@@ -27,7 +27,7 @@ const BlogPage = async () => {
           <div className='grid grid-cols-1 gap-8 divide-y sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {posts.map((post: Post) => (
               <Link
-                key={post.id}
+                key={post.id} prefetch
                 href={`/blog/${post.address}`}
                 className='flex flex-row-reverse justify-start gap-y-1 pt-8 sm:flex-col sm:rounded-md sm:border sm:pt-0 sm:shadow-lg sm:transition sm:duration-500 sm:ease-out sm:hover:scale-105 sm:hover:shadow-2xl'
               >
